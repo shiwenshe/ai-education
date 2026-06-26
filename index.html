@@ -15,12 +15,22 @@ body{margin:0;background:#faf9f5;font-family:-apple-system,"PingFang SC","Micros
 #aiq .btn{display:block;width:100%;border:0;border-radius:12px;background:#d85a30;color:#fff;font-size:16px;font-weight:500;padding:14px;cursor:pointer;font-family:inherit}
 #aiq .btn:hover{background:#993c1d}
 #aiq .btn.sec{background:#fff;color:#2c2c2a;border:1px solid #d3d1c7}
+#aiq a.btn.cta{text-align:center;text-decoration:none;color:#fff}
+#aiq a.btn.cta:hover{background:#993c1d}
+#aiq .ctasub{font-size:13px;color:#5f5e5a;line-height:1.6;margin:10px 2px 0}
 #aiq .bar{height:6px;background:#eceae2;border-radius:99px;overflow:hidden;margin-bottom:18px}
 #aiq .bar>i{display:block;height:100%;background:#d85a30;width:0;transition:width .3s}
 #aiq .qn{font-size:13px;color:#5f5e5a;margin:0 0 6px}
 #aiq .q{font-size:18px;font-weight:500;margin:0 0 16px}
 #aiq .opt{display:block;width:100%;text-align:left;border:1px solid #e3e1d8;background:#fff;border-radius:12px;padding:13px 14px;margin-bottom:10px;font-size:15px;cursor:pointer;font-family:inherit;color:#2c2c2a}
 #aiq .opt:hover{border-color:#d85a30;background:#fdf6f2}
+#aiq .opt.on{border-color:#d85a30;background:#fdf0e9;font-weight:500}
+#aiq .opt.on::before{content:"\2713 ";color:#d85a30;font-weight:700}
+#aiq .opt.dis{opacity:.4;cursor:not-allowed}
+#aiq .opt.dis:hover{border-color:#e3e1d8;background:#fff}
+#aiq .hint{font-size:13px;color:#993c1d;margin:0 0 12px}
+#aiq #nextbtn{margin-top:6px}
+#aiq #nextbtn:disabled{background:#e0ccc2;cursor:not-allowed}
 #aiq .badge{display:inline-block;font-size:13px;font-weight:500;padding:4px 12px;border-radius:99px;margin-bottom:12px}
 #aiq .rname{font-size:25px;font-weight:500;margin:0 0 6px}
 #aiq .rone{font-size:16px;color:#5f5e5a;margin:0 0 16px}
@@ -54,29 +64,32 @@ var P=[
 {n:'AI 生活魔法师型',one:'别人用 AI 搞效率，你想用 AI 给生活变出一点惊喜。',adv:'情感细腻、生活感强，容易做出有温度的作品。',risk:'容易觉得「这不算正经 AI 能力」，但其实这类作品最容易被分享、被看见。',hw:'选一个具体的人，做一个 1 页小作品：生日页、回忆页、故事页都行。',route:'生活记录 / 互动小网页 / 情感作品 / 个人展示',dir:'D 生活记录',r:'viral'}
 ];
 var Q=[
-['「打开 AI 工具的那一刻，你通常是？」',[['手比脑子快，先开干，做出来再说',{0:2,4:1}],['收藏夹满了，打开率约等于零',{1:2}],['脑子里点子排队，但不知道叫哪个先上',{2:2}],['很想做，手悬在键盘上，第一步死活迈不出去',{3:2}],['知道它重要，但「晚点再说」已经说了三个月',{8:2}]]],
-['「同样一个小项目丢给你，你大概率会：」',[['做得挺好看，别人忍不住想点开',{5:2}],['默默做完，做完就锁抽屉里',{7:2}],['一上手就摸到门道，做得飞快',{9:2}],['起步慢半拍，但一旦动起来就很稳',{11:2}],['总觉得还差一口气，迟迟不肯松手',{13:2}]]],
-['「碰到一个没玩过的 AI 工具，你脑子里第一句是：」',[['这玩意能塞进我工作里吗？能拆成流程吗？',{0:2,6:1}],['先搜搜有没有现成的、别人做过的，拿来改吧',{4:2}],['先囤一波资料、教程、拆解，看完再说',{12:2}],['一眼锁定它哪里拉胯，先吐槽为敬',{10:2}],['琢磨着能不能给家里人整点好玩的',{14:2}]]],
-['「说实话，你学 AI 图个啥？」',[['图个每天少加点班，早点下班',{6:2}],['图个能往简历上一摆、能拿出手的作品',{7:1,5:1,0:1}],['图把脑子里那个想法变成能演示的 Demo',{2:1,4:1,9:1}],['图给家人朋友做个有温度的小玩意',{14:2,11:1}],['还没想明白，先进来瞅瞅再说',{8:1,1:1}]]],
-['「身边人背地里会怎么形容你？」',[['天生牵头那个，爱组织、爱复盘',{0:2}],['收藏狂魔，啥都懂一点，啥都没干过',{1:2,12:1}],['点子王，脑洞大到能开个洞',{2:2}],['嘴上门儿清，评论区一针见血',{10:2}],['平时挺闷，一交东西全场安静',{7:2}]]],
-['「现在就让你交一版作品，你的第一反应是：」',[['行，先整个粗糙版丢出来，丑就丑吧',{0:1,4:1}],['等等，让我再改改，这版真不能看',{13:2}],['让我先把它研究透，再动手',{12:1,3:1}],['做倒是能做，就是懒得发出去',{7:1,11:1}],['我更擅长点评别人的，自己嘛…还没动',{10:2}]]],
-['「实话实说，你最容易卡在哪一关？」',[['想得太多，迟迟没开张',{3:2}],['点子太多，怎么也收不住',{2:2}],['工具囤太多，一个没真用上',{1:2}],['标准太高，第一版死活交不出来',{13:2}],['资料看到饱，就是没变成动作',{12:2}]]],
-['「聊到『走捷径 / 野路子』，你是哪一派？」',[['能跑通就是好路，绕点远怕啥',{4:2}],['我走正道，稳扎稳打不慌',{11:2}],['我专门找最省事的工具组合',{0:1,6:1}],['我先围观别人踩坑，再决定下不下场',{12:1,8:1}]]],
-['「说到『把自己的作品发出去』，你是：」',[['乐意啊，做出来就是给人看的',{5:2}],['不太想发，闷头做就挺好',{7:1,11:1}],['等改到自己满意那天再发（遥遥无期）',{13:1,3:1}],['我做的偏生活、偏情感，本来就想发给那个人',{14:2}]]],
-['「摸着良心说，最近 30 天你用 AI 真『做出过』啥？」',[['整出好几个小东西，手速惊人',{9:2,4:1}],['做了，但全是『帮我少干点活』那种',{6:2}],['想了一大堆，真做出来的…暂时没有',{2:1,3:1,1:1}],['看了一堆、藏了一堆，做了个寂寞',{1:2,12:1}],['给生活整了点小作品，挺有温度的',{14:1,11:1}]]],
-['「测完这个测试，你打算？」',[['截个图，回头有空再看（大概率没空）',{8:2,1:1}],['立刻挑结果里的第一份作业去做',{0:2}],['先转发给同事，看看大家都是哪种',{5:2}],['这测试我得先评一句，分得准不准',{10:2}],['存进收藏夹，和那堆教程作伴',{1:2,12:1}]]],
-['「同事甩给你一个 AI 任务，你心里第一句是？」',[['能不能让我早点干完、准点下班',{6:2}],['行，我默默搞定，到时候直接交结果',{7:2}],['先问清楚要做到什么标准再动',{13:2}],['呃……这第一步到底从哪开始',{3:2}],['先翻翻有没有现成的，拿来改最快',{4:2,12:1}]]],
-['「你手机里 AI 相关的东西，更接近哪种？」',[['满屏教程、长文、别人的拆解，越存越多',{12:2}],['一堆下载好的工具，打开率感人',{1:2}],['没存啥，但要用的时候随手就上',{9:2}],['存的都是给生活 / 家人做点小东西的灵感',{14:2}],['全是没落地的想法备忘录',{2:2}]]],
-['「让你用一句话夸自己学 AI 这件事，你会说？」',[['起步慢点，但我一旦上手就很稳',{11:2}],['道理我都懂，就是还没真上手',{10:2}],['也不知道为啥，反正上手挺快',{9:2}],['我做的东西，至少卖相不输人',{5:2}],['要做就做到位，不糊弄',{13:2}]]],
-['「周末空出两小时学 AI，你最可能怎么用掉？」',[['给生活 / 家人做个小东西，比如一页小网站',{14:2}],['提前把下周的活儿用 AI 干掉一点',{6:2}],['瞎折腾，试一堆新工具看哪个好玩',{4:2}],['先刷会儿别人做的，找找感觉再说',{8:2,12:1}],['给自己排个像样的学习计划',{0:2}]]]
+['「周五下午，老板说『下周想用 AI 把这事自动化一下』，周末两天归你。周一早上同事问你进展，你最可能的实际情况是——」',[['已经攒了个能跑的粗糙版，丑但能演示',{4:2,9:1,0:1}],['满脑子三四个方案，但还没定先做哪个',{2:2,3:1}],['把相关工具、教程、案例存了一大堆，正打算开始看',{12:2,1:1}],['想得挺细，方案在脑子里挺完整，就是还没正式动手',{3:2,13:1}],['周末没碰，想着「周一到了再说」',{8:2,6:1}]]],
+['「一个你完全没用过的 AI 工具，界面全英文，没有中文教程。给你 20 分钟，你大概率——」',[['直接乱点，点坏了再说，先摸出它能干嘛',{4:2,9:1}],['先找别人录的视频 / 现成模板，照着抄一遍',{12:1,1:1,11:1}],['先想清楚「它能塞进我哪个活儿里」再决定要不要花这 20 分钟',{0:2,6:1}],['大概翻一眼，截个图存着，「等需要的时候再正经研究」',{1:2,8:1}],['先看看评论区别人怎么吐槽它，再决定值不值得上手',{10:2,8:1}]]],
+['「你做了个小东西，自己看 70 分。这时候有人说『发出来看看呗』。你心里那一下——」',[['发就发，丑就丑，反正先有反馈',{0:1,4:1,9:1}],['「再让我改两处」，然后改着改着就到了半夜',{13:2}],['能发，但更想自己默默再打磨，不太想被围观',{7:2,11:1}],['「等我把它彻底搞懂了再发」，于是没发',{12:1,3:1}],['我做的这类东西本来就是要给特定某个人看的，发不发公开无所谓',{14:2}]]],
+['「半夜刷到一条 AI 视频，让你心里『嗯这个我想学』的，最可能是哪种——」',[['「这套流程能让我每天少加一小时班」',{6:2}],['「这个做出来能放简历 / 作品集里，挺能打」',{7:1,0:1,5:1}],['「我脑子里那个想法，好像能用它做成 Demo」',{2:2,4:1}],['「这个拿来给家里人 / 对象整个小惊喜，绝了」',{14:2,11:1}],['「先收藏，回头研究」（然后就没有回头了）',{1:2,12:1}]]],
+['「你做完一个还不错的东西。接下来一周里，你更可能发生的是——」',[['顺手发到群里 / 朋友圈，配一句让人想点开的话',{5:2}],['啥也没发，自己存着，下次有人正好问起才拿出来',{7:2,11:1}],['想发，但卡在「文案怎么写才不尴尬」，拖着拖着就过去了',{13:1,3:1}],['只私发给特定一两个人，不想公开',{14:1,11:1}],['倒是很乐意去别人的作品下面评论两句',{10:2}]]],
+['「翻翻你最近三个月的手机和电脑，下面这些『真实发生过』的，有几个就勾几个——」',[['下载 / 注册了 3 个以上 AI 工具，但有一半没正经打开过',{1:2}],['收藏夹 / 稍后读里躺着十几篇 AI 教程长文',{12:2}],['备忘录里记着好几个「以后要做」的点子，至今都还在「以后」',{2:2}],['真的做出过至少一个能给别人看的小东西',{9:2,4:1}],['用 AI 处理过实际工作 / 生活里的某件重复事',{6:2,14:1}],['以上基本都没有，主要还在「观望」阶段',{8:2}]],'multi'],
+['「同一个 AI 任务，你和朋友一起上手。半小时后对比，更接近你的情况是——」',[['我莫名其妙就做出来了，但要我解释怎么做到的，说不太清',{9:2}],['我做得不算最快，但我能讲清楚每一步为什么这么做',{0:2,13:1}],['我起步比他慢，但越往后越稳，最后反而我的更耐看',{11:2}],['我俩都没做完，但我把这工具的毛病吐槽得特别到位',{10:2}],['我绕了条野路子，看着不正规，但居然跑通了',{4:2}]]],
+['「同样的内容，你和别人都做了一版。结果别人先点开了你的。最可能是因为——」',[['我的卖相好、第一眼就抓人',{5:2}],['我把它说成了一句别人想转发的话',{5:1,10:1,0:1}],['我做的偏生活、偏情感，戳到人了',{14:2}],['其实不是，我做的没人先点开，我也没指望被点开',{7:2,11:1}],['我压根没做出来，还在改',{13:1,3:1}]]],
+['「做到一半卡住了，AI 给的结果不对。这时候真实的你，下一个小时大概在干嘛——」',[['换七八种问法接着试，不信搞不定',{4:2,9:1}],['退回去重新查资料，想先彻底搞懂为什么不对',{12:2,3:1}],['越改越觉得整个不行，干脆推倒想重做一版',{13:2}],['先放一放，刷会儿手机，「待会儿再说」',{8:2,1:1}],['跑去问人 / 翻别人现成的方案，拿来改',{0:1,4:1,6:1}]]],
+['「测出结果后，最像你的下一步是——」',[['截图发群，配一句『来对个号，看你们都是啥型』',{5:2,0:1}],['想先评一句『这测试分得准不准』再说',{10:2}],['截图存着，想着回头看（大概率没回头）',{1:1,8:1,12:1}],['自己看完就行了，不太会发出去',{7:2,11:1}],['默默记下结果页里那个『第一份作业』，打算真去做',{0:1,9:1,4:1}]]],
+['「回想你上一次『想认真学个新东西』，最后大概是——」',[['头三天猛冲，然后慢慢就忘了',{2:1,1:1,4:1}],['一开始很慢、没什么感觉，但坚持了一阵后越来越上道',{11:2}],['一直在『准备学』的阶段，资料备齐了但没真开始',{12:2,3:1}],['学是学了，但只学了能马上用上的那部分，其余不管',{6:2}],['学得不声不响，等别人发现时我已经挺熟了',{7:2,9:1}]]],
+['「你脑子里有个『用 AI 做点什么』的想法挺久了。它现在的状态是——」',[['还是个想法，但我能眉飞色舞讲半小时它有多妙',{2:2,10:1}],['已经做出第一版了，虽然简陋',{9:1,4:1,0:1}],['我把它拆成了具体步骤，正卡在第一步要不要动手',{3:2}],['我觉得现在做出来肯定不够好，所以一直没开始',{13:2}],['它是个给生活 / 家人用的小想法，我不太当『正经项目』看',{14:2,11:1}]]],
+['「如果让最熟你的朋友吐槽你学东西这件事，他大概率会说哪几句？有几句中就勾几句——」',[['「你点子是真多，就是十个有九个没下文」',{2:2}],['「你东西做得是好看，就是有时候华而不实」',{5:2}],['「你嘴上门儿清，自己倒是没怎么真上手」',{10:2}],['「你平时不吭声，一交东西吓人一跳」',{7:2}],['「你要求太高了，一个普通版本都不肯交」',{13:2}],['「你东西堆了一堆，真用上的没几个」',{1:2,12:1}],['「你慢是慢点，但你弄的都挺靠谱」',{11:2}],['「你就图省事，怎么快怎么来」',{6:2,4:1}]],'multi']
 ];
-var i=0,sc={},app=document.getElementById('app');
+var i=0,sc={},sel=[],app=document.getElementById('app');
+var MULTI_CAP=3;
 function result(){var best=0,bs=-1,bw=-1;for(var k=0;k<P.length;k++){var s=sc[k]||0,ww=W[P[k].r];if(s>bs||(s===bs&&ww>bw)){bs=s;bw=ww;best=k;}}return best;}
-function intro(){app.innerHTML='<div class="card"><p class="brand">灵雨漱石 · AI 开学分班测试（内测 demo）</p><h1>测一测，开学你被分到哪个 AI 学习人格？</h1><p class="sub">15 道题，3 分钟搞定。15 种人格随机分班，手气好的能抽到「隐藏稀有」，别羡慕。</p><button class="btn" onclick="start()">开始测试</button></div>';}
-function start(){i=0;sc={};question();}
-function question(){var q=Q[i],h='<div class="card"><div class="bar"><i style="width:'+(i/Q.length*100)+'%"></i></div><p class="qn">第 '+(i+1)+' / '+Q.length+' 题</p><p class="q">'+q[0]+'</p>';for(var x=0;x<q[1].length;x++){h+='<button class="opt" onclick="pick('+x+')">'+q[1][x][0]+'</button>';}h+='</div>';app.innerHTML=h;window.scrollTo(0,0);}
+function intro(){app.innerHTML='<div class="card"><p class="brand">灵雨漱石 · AI 开学分班测试（内测 demo）</p><h1>测一测，开学你被分到哪个 AI 学习人格？</h1><p class="sub">13 道题，约 3 分钟搞定。15 种人格随机分班，手气好的能抽到「隐藏稀有」，别羡慕。</p><button class="btn" onclick="start()">开始测试</button></div>';}
+function start(){i=0;sc={};sel=[];question();}
+function isMulti(q){return q[2]==='multi';}
+function question(){var q=Q[i],multi=isMulti(q),h='<div class="card"><div class="bar"><i style="width:'+(i/Q.length*100)+'%"></i></div><p class="qn">第 '+(i+1)+' / '+Q.length+' 题</p><p class="q">'+q[0]+'</p>';if(multi){sel=[];h+='<p class="hint">多选 · 最多选 '+MULTI_CAP+' 项</p>';for(var x=0;x<q[1].length;x++){h+='<button class="opt" id="opt'+x+'" onclick="toggle('+x+')">'+q[1][x][0]+'</button>';}h+='<button class="btn" id="nextbtn" disabled onclick="nextMulti()">下一题 →</button>';}else{for(var y=0;y<q[1].length;y++){h+='<button class="opt" onclick="pick('+y+')">'+q[1][y][0]+'</button>';}}h+='</div>';app.innerHTML=h;window.scrollTo(0,0);}
 function pick(x){var m=Q[i][1][x][1];for(var k in m){sc[k]=(sc[k]||0)+m[k];}i++;if(i<Q.length)question();else show();}
-function show(){var b=result(),p=P[b],r=RAR[p.r];app.innerHTML='<div class="card"><div class="bar"><i style="width:100%"></i></div><span class="badge" style="color:'+r[1]+';background:'+r[2]+'">'+r[0]+'同学</span><p class="rname">'+p.n+'</p><p class="rone">'+p.one+'</p><p class="dir">推荐大方向：'+p.dir+'</p><div class="row"><p class="k">你的优势</p><p class="v">'+p.adv+'</p></div><div class="row"><p class="k">要小心</p><p class="v">'+p.risk+'</p></div><div class="row"><p class="k">你的第一份作业</p><p class="v">'+p.hw+'</p></div><div class="row"><p class="k">建议课程路线</p><p class="v">'+p.route+'</p></div><div style="height:16px"></div><button class="btn sec" onclick="intro()">重新测一次</button><p class="foot">截图甩群里，看看同事都是哪号选手 · 灵雨漱石 内测</p></div>';window.scrollTo(0,0);}
+function toggle(x){var pos=sel.indexOf(x);if(pos>-1){sel.splice(pos,1);}else{if(sel.length>=MULTI_CAP)return;sel.push(x);}refreshMulti();}
+function refreshMulti(){var q=Q[i],full=sel.length>=MULTI_CAP;for(var x=0;x<q[1].length;x++){var el=document.getElementById('opt'+x),on=sel.indexOf(x)>-1;el.className='opt'+(on?' on':'')+((!on&&full)?' dis':'');el.disabled=(!on&&full);}document.getElementById('nextbtn').disabled=sel.length<1;}
+function nextMulti(){if(sel.length<1)return;var q=Q[i];for(var s=0;s<sel.length;s++){var m=q[1][sel[s]][1];for(var k in m){sc[k]=(sc[k]||0)+m[k];}}sel=[];i++;if(i<Q.length)question();else show();}
+function show(){var b=result(),p=P[b],r=RAR[p.r];app.innerHTML='<div class="card"><div class="bar"><i style="width:100%"></i></div><span class="badge" style="color:'+r[1]+';background:'+r[2]+'">'+r[0]+'同学</span><p class="rname">'+p.n+'</p><p class="rone">'+p.one+'</p><p class="dir">推荐大方向：'+p.dir+'</p><div class="row"><p class="k">你的优势</p><p class="v">'+p.adv+'</p></div><div class="row"><p class="k">要小心</p><p class="v">'+p.risk+'</p></div><div class="row"><p class="k">你的第一份作业</p><p class="v">'+p.hw+'</p></div><div class="row"><p class="k">建议课程路线</p><p class="v">'+p.route+'</p></div><div style="height:18px"></div><a class="btn cta" href="#">按你这型，第一步该怎么走 →</a><p class="ctasub">道理跟健身一样——花钱请了私教，才真会去练。报个名，等于给自己请个『AI 督学』，有人盯着，你才真动手。</p><div style="height:12px"></div><button class="btn sec" onclick="intro()">重新测一次</button><p class="foot">截图甩群里，看看同事都是哪号选手 · 灵雨漱石 内测</p></div>';window.scrollTo(0,0);}
 intro();
 </script>
 </body>
