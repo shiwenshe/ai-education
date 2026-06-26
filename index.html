@@ -5,47 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>测一测，你的 AiTi 是什么 · 灵雨漱石内测</title>
 <style>
-body{margin:0;background:#faf9f5;font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+body{margin:0;background:#f5f1e6;font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif}
 #aiq *{box-sizing:border-box}
-#aiq{max-width:600px;margin:0 auto;padding:24px 16px 40px;color:#2c2c2a;font-size:16px;line-height:1.7}
-#aiq .card{background:#fff;border:1px solid #e3e1d8;border-radius:16px;padding:24px}
-#aiq .brand{font-size:13px;color:#5f5e5a;margin:0 0 4px;letter-spacing:.3px}
-#aiq h1{font-size:23px;font-weight:500;margin:0 0 8px}
-#aiq .sub{color:#5f5e5a;font-size:15px;margin:0 0 20px}
+#aiq{max-width:600px;margin:0 auto;padding:24px 16px 40px;color:#2c2922;font-size:16px;line-height:1.7}
+#aiq .card{background:#fdfbf4;border:1px solid #e3dcc8;border-radius:16px;padding:24px}
+#aiq .brand{font-size:13px;color:#6b6354;margin:0 0 4px;letter-spacing:.3px}
+#aiq h1{font-size:23px;font-weight:500;margin:0 0 8px;color:#2c2922}
+#aiq .sub{color:#6b6354;font-size:15px;margin:0 0 20px}
 #aiq .btn{display:block;width:100%;border:0;border-radius:12px;background:#d85a30;color:#fff;font-size:16px;font-weight:500;padding:14px;cursor:pointer;font-family:inherit}
-#aiq .btn:hover{background:#993c1d}
-#aiq .btn.sec{background:#fff;color:#2c2c2a;border:1px solid #d3d1c7}
+#aiq .btn:hover{background:#b8431f}
+#aiq .btn.sec{background:#fdfbf4;color:#2c2922;border:1px solid #d8cfb8}
+#aiq .btn.sec:hover{background:#f0e9d8;border-color:#c9bd9f}
 #aiq a.btn.cta{text-align:center;text-decoration:none;color:#fff}
-#aiq a.btn.cta:hover{background:#993c1d}
-#aiq .ctasub{font-size:13px;color:#5f5e5a;line-height:1.6;margin:10px 2px 0}
-#aiq .bar{height:6px;background:#eceae2;border-radius:99px;overflow:hidden;margin-bottom:18px}
+#aiq a.btn.cta:hover{background:#b8431f}
+#aiq .ctasub{font-size:13px;color:#6b6354;line-height:1.6;margin:10px 2px 0}
+#aiq .bar{height:6px;background:#ece3cf;border-radius:99px;overflow:hidden;margin-bottom:18px}
 #aiq .bar>i{display:block;height:100%;background:#d85a30;width:0;transition:width .3s}
-#aiq .qn{font-size:13px;color:#5f5e5a;margin:0 0 6px}
-#aiq .q{font-size:18px;font-weight:500;margin:0 0 16px}
-#aiq .opt{display:block;width:100%;text-align:left;border:1px solid #e3e1d8;background:#fff;border-radius:12px;padding:13px 14px;margin-bottom:10px;font-size:15px;cursor:pointer;font-family:inherit;color:#2c2c2a}
-#aiq .opt:hover{border-color:#d85a30;background:#fdf6f2}
-#aiq .opt.on{border-color:#d85a30;background:#fdf0e9;font-weight:500}
+#aiq .qn{font-size:13px;color:#6b6354;margin:0 0 6px}
+#aiq .q{font-size:18px;font-weight:500;margin:0 0 16px;color:#2c2922}
+#aiq .opt{display:block;width:100%;text-align:left;border:1px solid #e0d8c4;background:#fdfbf4;border-radius:12px;padding:13px 14px;margin-bottom:10px;font-size:15px;cursor:pointer;font-family:inherit;color:#2c2922}
+#aiq .opt:hover{border-color:#d85a30;background:#fbf1e9}
+#aiq .opt.on{border-color:#d85a30;border-width:2px;background:#f7e7dc;font-weight:500;box-shadow:inset 3px 0 0 #d85a30}
 #aiq .opt.on::before{content:"\2713 ";color:#d85a30;font-weight:700}
 #aiq .opt.dis{opacity:.4;cursor:not-allowed}
-#aiq .opt.dis:hover{border-color:#e3e1d8;background:#fff}
-#aiq .hint{font-size:13px;color:#993c1d;margin:0 0 12px}
+#aiq .opt.dis:hover{border-color:#e0d8c4;background:#fdfbf4}
+#aiq .hint{font-size:13px;color:#b8431f;margin:0 0 12px}
 #aiq #nextbtn{margin-top:6px}
 #aiq #nextbtn:disabled{background:#e0ccc2;cursor:not-allowed}
 #aiq .badge{display:inline-block;font-size:13px;font-weight:500;padding:4px 12px;border-radius:99px;margin-bottom:12px}
-#aiq .ailead{font-size:14px;color:#5f5e5a;margin:0 0 2px}
-#aiq .rname{font-size:25px;font-weight:500;margin:0 0 6px}
-#aiq .rone{font-size:16px;color:#5f5e5a;margin:0 0 16px}
-#aiq .dir{font-size:14px;color:#993c1d;font-weight:500;margin:0 0 4px}
-#aiq .row{border-top:1px solid #e3e1d8;padding:13px 0}
-#aiq .row .k{font-size:13px;color:#5f5e5a;margin:0 0 3px}
-#aiq .row .v{margin:0;font-size:15px}
-#aiq .foot{text-align:center;color:#888780;font-size:12px;margin-top:16px}
+#aiq .picwrap{display:block;width:184px;margin:8px auto 16px;background:#fff;border:1px solid #e3dcc8;border-radius:14px;padding:12px 12px 14px;box-shadow:0 2px 10px rgba(44,41,34,.07)}
+#aiq .picwrap img{display:block;width:160px;height:auto;margin:0 auto;border-radius:6px}
+#aiq .ailead{font-size:14px;color:#6b6354;margin:0 0 2px}
+#aiq .rname{font-size:25px;font-weight:500;margin:0 0 6px;color:#2c2922}
+#aiq .rone{font-size:16px;color:#6b6354;margin:0 0 16px}
+#aiq .dir{font-size:14px;color:#b8431f;font-weight:500;margin:0 0 4px}
+#aiq .row{border-top:1px solid #e3dcc8;padding:13px 0}
+#aiq .row .k{font-size:13px;color:#6b6354;margin:0 0 3px}
+#aiq .row .v{margin:0;font-size:15px;color:#2c2922}
+#aiq .foot{text-align:center;color:#9a9181;font-size:12px;margin-top:16px}
 </style>
 </head>
 <body>
 <div id="aiq"><div id="app"></div></div>
 <script>
-var RAR={common:['常见','#5f5e5a','#f1efe8'],potential:['潜力','#0f6e56','#e1f5ee'],viral:['高传播','#993556','#fbeaf0'],action:['高行动','#854f0b','#faeeda'],rare:['隐藏稀有','#3c3489','#eeedfe']};
+var RAR={common:['常见','#6b6354','#efe8d6'],potential:['潜力','#1c6b4f','#dcefe0'],viral:['高传播','#9e3a52','#f8e6e0'],action:['高行动','#8a4d12','#f6ead0'],rare:['隐藏稀有','#3f3580','#e9e6f5']};
 var W={rare:5,action:4,viral:3,potential:2,common:1};
 var P=[
 {n:'AI 课代表型',one:'你不是最懂 AI 的，但你最容易把一件事推进起来。',adv:'组织感、推进感、复盘感。',risk:'太早扛起全局——别人还没开始，你已经想做系统、流程和团队。',hw:'别一上来做大系统：先选一个小任务，拆成 3 步，让 AI 跑通。',route:'AI 小团队 / 项目工作流 / 作品集',dir:'E 项目探索',r:'action'},
@@ -91,7 +94,7 @@ function pick(x){var m=Q[i][1][x][1];for(var k in m){sc[k]=(sc[k]||0)+m[k];}i++;
 function toggle(x){var pos=sel.indexOf(x);if(pos>-1){sel.splice(pos,1);}else{if(sel.length>=MULTI_CAP)return;sel.push(x);}refreshMulti();}
 function refreshMulti(){var q=Q[i],full=sel.length>=MULTI_CAP;for(var x=0;x<q[1].length;x++){var el=document.getElementById('opt'+x),on=sel.indexOf(x)>-1;el.className='opt'+(on?' on':'')+((!on&&full)?' dis':'');el.disabled=(!on&&full);}document.getElementById('nextbtn').disabled=sel.length<1;}
 function nextMulti(){if(sel.length<1)return;var q=Q[i];for(var s=0;s<sel.length;s++){var m=q[1][sel[s]][1];for(var k in m){sc[k]=(sc[k]||0)+m[k];}}sel=[];i++;if(i<Q.length)question();else show();}
-function show(){var b=result(),p=P[b],r=RAR[p.r];var pic=IMG[p.n]?'<img src="'+IMG[p.n]+'" alt="'+p.n+'" style="display:block;width:160px;height:auto;margin:8px auto 14px;border-radius:12px">':'';app.innerHTML='<div class="card"><div class="bar"><i style="width:100%"></i></div><span class="badge" style="color:'+r[1]+';background:'+r[2]+'">'+r[0]+'同学</span>'+pic+'<p class="ailead">你的 AiTi 是</p><p class="rname">'+p.n+'</p><p class="rone">'+p.one+'</p><p class="dir">推荐大方向：'+p.dir+'</p><div class="row"><p class="k">你的优势</p><p class="v">'+p.adv+'</p></div><div class="row"><p class="k">要小心</p><p class="v">'+p.risk+'</p></div><div class="row"><p class="k">你的第一份作业</p><p class="v">'+p.hw+'</p></div><div class="row"><p class="k">建议课程路线</p><p class="v">'+p.route+'</p></div><div style="height:18px"></div><a class="btn cta" href="#">按你这型，第一步该怎么走 →</a><p class="ctasub">道理跟健身一样——花钱请了私教，才真会去练。报个名，等于给自己请个『AI 督学』，有人盯着，你才真动手。</p><div style="height:12px"></div><button class="btn sec" onclick="intro()">重新测一次</button><p class="foot">截图甩群里，看看同事都是哪号选手 · 灵雨漱石 内测</p></div>';window.scrollTo(0,0);}
+function show(){var b=result(),p=P[b],r=RAR[p.r];var pic=IMG[p.n]?'<div class="picwrap"><img src="'+IMG[p.n]+'" alt="'+p.n+'"></div>':'';app.innerHTML='<div class="card"><div class="bar"><i style="width:100%"></i></div><span class="badge" style="color:'+r[1]+';background:'+r[2]+'">'+r[0]+'同学</span>'+pic+'<p class="ailead">你的 AiTi 是</p><p class="rname">'+p.n+'</p><p class="rone">'+p.one+'</p><p class="dir">推荐大方向：'+p.dir+'</p><div class="row"><p class="k">你的优势</p><p class="v">'+p.adv+'</p></div><div class="row"><p class="k">要小心</p><p class="v">'+p.risk+'</p></div><div class="row"><p class="k">你的第一份作业</p><p class="v">'+p.hw+'</p></div><div class="row"><p class="k">建议课程路线</p><p class="v">'+p.route+'</p></div><div style="height:18px"></div><a class="btn cta" href="#">按你这型，第一步该怎么走 →</a><p class="ctasub">道理跟健身一样——花钱请了私教，才真会去练。报个名，等于给自己请个『AI 督学』，有人盯着，你才真动手。</p><div style="height:12px"></div><button class="btn sec" onclick="intro()">重新测一次</button><p class="foot">截图甩群里，看看同事都是哪号选手 · 灵雨漱石 内测</p></div>';window.scrollTo(0,0);}
 intro();
 </script>
 </body>
