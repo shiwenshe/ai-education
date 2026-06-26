@@ -78,7 +78,7 @@ var Q=[
 ['「你脑子里有个『用 AI 做点什么』的想法挺久了。它现在的状态是——」',[['还是个想法，但我能眉飞色舞讲半小时它有多妙',{2:2,10:1}],['已经做出第一版了，虽然简陋',{9:1,4:1,0:1}],['我把它拆成了具体步骤，正卡在第一步要不要动手',{3:2}],['我觉得现在做出来肯定不够好，所以一直没开始',{13:2}],['它是个给生活 / 家人用的小想法，我不太当『正经项目』看',{14:2,11:1}]]],
 ['「如果让最熟你的朋友吐槽你学东西这件事，他大概率会说哪几句？有几句中就勾几句——」',[['「你点子是真多，就是十个有九个没下文」',{2:2}],['「你东西做得是好看，就是有时候华而不实」',{5:2}],['「你嘴上门儿清，自己倒是没怎么真上手」',{10:2}],['「你平时不吭声，一交东西吓人一跳」',{7:2}],['「你要求太高了，一个普通版本都不肯交」',{13:2}],['「你东西堆了一堆，真用上的没几个」',{1:2,12:1}],['「你慢是慢点，但你弄的都挺靠谱」',{11:2}],['「你就图省事，怎么快怎么来」',{6:2,4:1}]],'multi']
 ];
-var IMG={'AI 收藏夹富豪型':'img/shoucangjia.png','AI 点子烟花型':'img/dianzi.png','AI 课代表型':'img/kedaibiao.png','AI 执行卡壳型':'img/kage.png','AI 野路子型':'img/yelu.png','AI 资料潜水员型':'img/qianshui.png'};
+var IMG={'AI 课代表型':'img/kedaibiao.png','AI 收藏夹富豪型':'img/shoucangjia.png','AI 点子烟花型':'img/dianzi.png','AI 执行卡壳型':'img/kage.png','AI 野路子型':'img/yelu.png','AI 资料潜水员型':'img/qianshui.png','AI 班花 / 班草型':'img/banhua.png','AI 打工皇帝型':'img/dagong.png','AI 隐藏大佬型':'img/dalao.png','AI 躺平观察员型':'img/tangping.png','AI 天降奇才型':'img/qicai.png','AI 嘴强王者型':'img/zuiqiang.png','AI 慢热种子型':'img/manre.png','AI 完美主义症候群':'img/wanmei.png','AI 生活魔法师型':'img/mofashi.png'};
 var i=0,sc={},sel=[],app=document.getElementById('app');
 var MULTI_CAP=3;
 function result(){var best=0,bs=-1,bw=-1;for(var k=0;k<P.length;k++){var s=sc[k]||0,ww=W[P[k].r];if(s>bs||(s===bs&&ww>bw)){bs=s;bw=ww;best=k;}}return best;}
