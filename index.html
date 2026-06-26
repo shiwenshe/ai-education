@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 开学分班测试 · 内测 demo</title>
+<style>
+body{margin:0;background:#faf9f5;font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+#aiq *{box-sizing:border-box}
+#aiq{max-width:600px;margin:0 auto;padding:24px 16px 40px;color:#2c2c2a;font-size:16px;line-height:1.7}
+#aiq .card{background:#fff;border:1px solid #e3e1d8;border-radius:16px;padding:24px}
+#aiq .brand{font-size:13px;color:#5f5e5a;margin:0 0 4px;letter-spacing:.3px}
+#aiq h1{font-size:23px;font-weight:500;margin:0 0 8px}
+#aiq .sub{color:#5f5e5a;font-size:15px;margin:0 0 20px}
+#aiq .btn{display:block;width:100%;border:0;border-radius:12px;background:#d85a30;color:#fff;font-size:16px;font-weight:500;padding:14px;cursor:pointer;font-family:inherit}
+#aiq .btn:hover{background:#993c1d}
+#aiq .btn.sec{background:#fff;color:#2c2c2a;border:1px solid #d3d1c7}
+#aiq .bar{height:6px;background:#eceae2;border-radius:99px;overflow:hidden;margin-bottom:18px}
+#aiq .bar>i{display:block;height:100%;background:#d85a30;width:0;transition:width .3s}
+#aiq .qn{font-size:13px;color:#5f5e5a;margin:0 0 6px}
+#aiq .q{font-size:18px;font-weight:500;margin:0 0 16px}
+#aiq .opt{display:block;width:100%;text-align:left;border:1px solid #e3e1d8;background:#fff;border-radius:12px;padding:13px 14px;margin-bottom:10px;font-size:15px;cursor:pointer;font-family:inherit;color:#2c2c2a}
+#aiq .opt:hover{border-color:#d85a30;background:#fdf6f2}
+#aiq .badge{display:inline-block;font-size:13px;font-weight:500;padding:4px 12px;border-radius:99px;margin-bottom:12px}
+#aiq .rname{font-size:25px;font-weight:500;margin:0 0 6px}
+#aiq .rone{font-size:16px;color:#5f5e5a;margin:0 0 16px}
+#aiq .dir{font-size:14px;color:#993c1d;font-weight:500;margin:0 0 4px}
+#aiq .row{border-top:1px solid #e3e1d8;padding:13px 0}
+#aiq .row .k{font-size:13px;color:#5f5e5a;margin:0 0 3px}
+#aiq .row .v{margin:0;font-size:15px}
+#aiq .foot{text-align:center;color:#888780;font-size:12px;margin-top:16px}
+</style>
+</head>
+<body>
+<div id="aiq"><div id="app"></div></div>
+<script>
+var RAR={common:['常见','#5f5e5a','#f1efe8'],potential:['潜力','#0f6e56','#e1f5ee'],viral:['高传播','#993556','#fbeaf0'],action:['高行动','#854f0b','#faeeda'],rare:['隐藏稀有','#3c3489','#eeedfe']};
+var W={rare:5,action:4,viral:3,potential:2,common:1};
+var P=[
+{n:'AI 课代表型',one:'你不是最懂 AI 的，但你最容易把一件事推进起来。',adv:'组织感、推进感、复盘感。',risk:'太早扛起全局——别人还没开始，你已经想做系统、流程和团队。',hw:'别一上来做大系统：先选一个小任务，拆成 3 步，让 AI 跑通。',route:'AI 小团队 / 项目工作流 / 作品集',dir:'E 项目探索',r:'action'},
+{n:'AI 收藏夹富豪型',one:'你的收藏夹像图书馆，你的作品集像毛坯房。',adv:'信息敏感，知道哪里有新东西。',risk:'把「收藏了」误会成「学会了」。',hw:'从收藏夹里选 1 个工具，今天必须用它做出一个最小成果。',route:'AI 行动地图 / 第一条行动路线 / 一页纸任务书',dir:'通用 · 先启动',r:'common'},
+{n:'AI 点子烟花型',one:'你的脑子很会放烟花，但手还没学会点火。',adv:'有创意、有联想力。',risk:'不缺点子，缺的是把点子压成「第一版只做什么」。',hw:'写下最想做的 3 个点子，每个只回答：第一版最小能做成什么？',route:'想法到任务书 / Demo / 项目探索',dir:'E 项目探索',r:'potential'},
+{n:'AI 执行卡壳型',one:'你不是没想法，是每次都卡在第一步怎么开始。',adv:'谨慎，不容易乱来。',risk:'把一件事想得太完整，迟迟不敢做第一步。',hw:'把目标缩小到 15 分钟能完成（不是「做作品集」，而是「让 AI 列出首页 5 个模块」）。',route:'个人前情卡 / 第一条行动路线 / 最小任务拆解',dir:'通用 · 先启动',r:'common'},
+{n:'AI 野路子型',one:'你不一定走正规路线，但总能绕出一条能跑的路。',adv:'上手快、办法多、敢试。',risk:'要补上边界意识：什么能参考、什么不能照搬、什么能展示、什么不能上线。',hw:'找一个参考项目，让 AI 解释它的核心流程，写清「我能学什么、不能抄什么」。',route:'GitHub 参考 / 开源对标 / Demo 优化',dir:'E 项目探索',r:'action'},
+{n:'AI 班花 / 班草型',one:'你做的东西不一定最复杂，但别人最愿意点开。',adv:'审美和传播感。',risk:'先追求好看，忽略别人到底看不看得懂、用不用得上。',hw:'把你的项目写成一句别人愿意转发的话。',route:'内容表达 / 项目说明书 / 作品集 / 短视频',dir:'C 内容表达',r:'viral'},
+{n:'AI 打工皇帝型',one:'你学 AI 不是为了改变世界，是为了今天少加一点班。',adv:'需求真实，最容易马上用起来。',risk:'只停在「提效」，没沉淀成长期能力和可展示成果。',hw:'找一个每周重复 3 次以上的工作，固定成一条 AI 工作流。',route:'工作提效 / AI 工作流 / 固定输出模板',dir:'A 工作提效',r:'common'},
+{n:'AI 隐藏大佬型',one:'你平时不怎么冒泡，但一交作业就很吓人。',adv:'稳定、专注、能沉下去。',risk:'反馈太少，容易闭门造车。',hw:'找 3 个人看你的作品，只问：你看懂了什么？哪里没看懂？',route:'公开反馈 / 第二版优化 / 优秀作品池',dir:'B 求职提薪',r:'action'},
+{n:'AI 躺平观察员型',one:'你知道 AI 很重要，但你选择先躺一会儿。',adv:'清醒，不想被焦虑推着走。',risk:'把「暂时不动」变成长期不动。',hw:'不学工具，只写下「我最希望 AI 帮我少做的一件重复小事」。',route:'AI 行动地图 / 安全上手 / 低门槛路线',dir:'通用 · 先启动',r:'common'},
+{n:'AI 天降奇才型',one:'别人还在看教程，你一上手就像开了隐藏天赋。',adv:'人机协作直觉强。',risk:'太相信直觉、缺方法沉淀，今天做得出不代表下次能稳定复现。',hw:'把你和 AI 配合成功的一次过程，写成一份 SOP。',route:'方法沉淀 / AI 小团队 / 高阶共创池',dir:'E 项目探索',r:'rare'},
+{n:'AI 嘴强王者型',one:'你很会点评 AI，但自己还没下场打过一局。',adv:'表达和判断力。',risk:'停留在评论区，而不是作品区。',hw:'选一个你吐槽过的产品 / 作品，写一页「如果是我，我会怎么改」。',route:'案例拆解 / 项目说明书 / 公开表达',dir:'C 内容表达',r:'viral'},
+{n:'AI 慢热种子型',one:'你不是启动最快的人，但一旦发芽，会长得很稳。',adv:'耐心和持续性。',risk:'低估自己，以为启动慢就是不适合。',hw:'给自己定一个 7 天小目标，每天只推进 15 分钟，最后交一个能看的小成果。',route:'生活记录 / 个人助手 / 作品集',dir:'D 生活记录',r:'potential'},
+{n:'AI 资料潜水员型',one:'你不是没学习，是在资料海里潜太久了。',adv:'吸收力强、信息整理能力强。',risk:'容易把「理解世界」当成「改变自己」，资料越多、行动越慢。',hw:'从最近看过的一篇 AI 资料里，提炼出 1 个今天就能执行的小动作。',route:'信息整理 / 能力图谱 / 行动地图 / 任务书',dir:'通用 · 先启动',r:'potential'},
+{n:'AI 完美主义症候群',one:'你不是做不出来，是不允许自己做出一个普通版本。',adv:'标准高、质量意识强。',risk:'标准太高，导致迟迟不交作业。',hw:'故意交一版 60 分作品，并写下：这一版只验证什么，不代表我最终水平。',route:'丑版 Demo / 公开晒过程 / 反馈改第二版',dir:'通用 · 先启动',r:'potential'},
+{n:'AI 生活魔法师型',one:'别人用 AI 搞效率，你想用 AI 给生活变出一点惊喜。',adv:'情感细腻、生活感强，容易做出有温度的作品。',risk:'容易觉得「这不算正经 AI 能力」，但其实这类作品最容易被分享、被看见。',hw:'选一个具体的人，做一个 1 页小作品：生日页、回忆页、故事页都行。',route:'生活记录 / 互动小网页 / 情感作品 / 个人展示',dir:'D 生活记录',r:'viral'}
+];
+var Q=[
+['打开 AI 工具，你最常的状态是？',[['想到一个事就开干，先做出来再说',{0:2,4:1}],['收藏了一堆，但很少真的打开用',{1:2}],['脑子里点子很多，但不知道先做哪个',{2:2}],['想做，但总卡在「第一步怎么开始」',{3:2}],['知道它重要，但总想「晚点再学」',{8:2}]]],
+['同样一个小项目，你更可能：',[['做得像作品，别人愿意点开',{5:2}],['默默做完，不太发出来',{7:2}],['一上手就找到感觉，做得飞快',{9:2}],['启动慢，但做起来很稳',{11:2}],['总觉得不够好，迟迟不肯拿出来',{13:2}]]],
+['面对一个新 AI 工具，你第一反应：',[['它能用到我工作里吗？能拆成流程吗？',{0:2,6:1}],['找有没有开源 / 别人做过的，拿来改',{4:2}],['先看大量资料、教程、拆解',{12:2}],['一眼看出它哪里不行，先吐槽',{10:2}],['想着能不能给生活 / 家人做点有趣的',{14:2}]]],
+['你学 AI 最想要的结果：',[['每天少加点班、提效',{6:2}],['一个能放简历、能展示的作品',{7:1,5:1,0:1}],['把一个想法做成能演示的 Demo',{2:1,4:1,9:1}],['给家人 / 朋友做个有温度的小东西',{14:2,11:1}],['还没想清楚，先看看',{8:1,1:1}]]],
+['身边人会怎么形容你？',[['推进力强、爱组织、爱复盘',{0:2}],['收藏狂魔、什么都知道一点',{1:2,12:1}],['点子王、脑洞大',{2:2}],['嘴上很懂、评论很犀利',{10:2}],['闷、低调，但交东西吓人',{7:2}]]],
+['让你现在交一版作品，你的反应：',[['行，先做个粗糙版丢出来',{0:1,4:1}],['等我再改改，现在还不能看',{13:2}],['我先研究透了再做',{12:1,3:1}],['做是能做，就是懒得发出去',{7:1,11:1}],['我更想点评别人的，自己还没动手',{10:2}]]],
+['你最容易卡在哪？',[['想太多、迟迟不开始',{3:2}],['点子太多、收不拢',{2:2}],['工具收藏太多、没真用',{1:2}],['标准太高、第一版交不出',{13:2}],['资料看太多、没转成行动',{12:2}]]],
+['你对「走捷径 / 野路子」的态度：',[['能跑通就行，绕路也无所谓',{4:2}],['我喜欢正规、稳扎稳打',{11:2}],['我会找最高效的工具组合',{0:1,6:1}],['我先看看别人踩过的坑',{12:1,8:1}]]],
+['关于「公开展示自己的作品」：',[['乐意，做的东西就是要被看见',{5:2}],['不太愿意，低调做就好',{7:1,11:1}],['等做到满意才敢发',{13:1,3:1}],['我做的偏生活 / 情感，本就想分享给特定的人',{14:2}]]],
+['最近 30 天，你用 AI 真正「做出过」什么？',[['做了好几个小东西，手很快',{9:2,4:1}],['做了，但都是工作提效类的',{6:2}],['想了很多，但没真的做出来',{2:1,3:1,1:1}],['看了很多、收藏了很多，但没做',{1:2,12:1}],['给生活做了点小作品',{14:1,11:1}]]]
+];
+var i=0,sc={},app=document.getElementById('app');
+function result(){var best=0,bs=-1,bw=-1;for(var k=0;k<P.length;k++){var s=sc[k]||0,ww=W[P[k].r];if(s>bs||(s===bs&&ww>bw)){bs=s;bw=ww;best=k;}}return best;}
+function intro(){app.innerHTML='<div class="card"><p class="brand">灵雨漱石 · AI 开学分班测试（内测 demo）</p><h1>测一测，你是哪一种 AI 学习人格？</h1><p class="sub">10 道题，约 2 分钟。看看你抽到 15 种里的哪一种——有人是「隐藏稀有」哦。</p><button class="btn" onclick="start()">开始测试</button></div>';}
+function start(){i=0;sc={};question();}
+function question(){var q=Q[i],h='<div class="card"><div class="bar"><i style="width:'+(i/Q.length*100)+'%"></i></div><p class="qn">第 '+(i+1)+' / '+Q.length+' 题</p><p class="q">'+q[0]+'</p>';for(var x=0;x<q[1].length;x++){h+='<button class="opt" onclick="pick('+x+')">'+q[1][x][0]+'</button>';}h+='</div>';app.innerHTML=h;window.scrollTo(0,0);}
+function pick(x){var m=Q[i][1][x][1];for(var k in m){sc[k]=(sc[k]||0)+m[k];}i++;if(i<Q.length)question();else show();}
+function show(){var b=result(),p=P[b],r=RAR[p.r];app.innerHTML='<div class="card"><div class="bar"><i style="width:100%"></i></div><span class="badge" style="color:'+r[1]+';background:'+r[2]+'">'+r[0]+'同学</span><p class="rname">'+p.n+'</p><p class="rone">'+p.one+'</p><p class="dir">推荐大方向：'+p.dir+'</p><div class="row"><p class="k">你的优势</p><p class="v">'+p.adv+'</p></div><div class="row"><p class="k">要小心</p><p class="v">'+p.risk+'</p></div><div class="row"><p class="k">你的第一份作业</p><p class="v">'+p.hw+'</p></div><div class="row"><p class="k">建议课程路线</p><p class="v">'+p.route+'</p></div><div style="height:16px"></div><button class="btn sec" onclick="intro()">重新测一次</button><p class="foot">截个图发群里，看看同事都是哪一种 · 灵雨漱石 内测</p></div>';window.scrollTo(0,0);}
+intro();
+</script>
+</body>
+</html>
