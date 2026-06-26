@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI 开学分班测试 · 内测 demo</title>
+<title>测一测，你的 AiTi 是什么 · 灵雨漱石内测</title>
 <style>
 body{margin:0;background:#faf9f5;font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif}
 #aiq *{box-sizing:border-box}
@@ -82,7 +82,7 @@ var IMG={'AI 课代表型':'img/kedaibiao.png','AI 收藏夹富豪型':'img/shou
 var i=0,sc={},sel=[],app=document.getElementById('app');
 var MULTI_CAP=3;
 function result(){var best=0,bs=-1,bw=-1;for(var k=0;k<P.length;k++){var s=sc[k]||0,ww=W[P[k].r];if(s>bs||(s===bs&&ww>bw)){bs=s;bw=ww;best=k;}}return best;}
-function intro(){app.innerHTML='<div class="card"><p class="brand">灵雨漱石 · AI 开学分班测试（内测 demo）</p><h1>测一测，开学你被分到哪个 AI 学习人格？</h1><p class="sub">13 道题，约 3 分钟搞定。15 种人格随机分班，手气好的能抽到「隐藏稀有」，别羡慕。</p><button class="btn" onclick="start()">开始测试</button></div>';}
+function intro(){app.innerHTML='<div class="card"><p class="brand">灵雨漱石 · AI 开学分班测试（内测 demo）</p><h1>测一测，你的 AiTi 是什么？</h1><p class="sub">13 道题，约 3 分钟搞定。15 种人格随机分班，手气好的能抽到「隐藏稀有」，别羡慕。</p><button class="btn" onclick="start()">开始测试</button></div>';}
 function start(){i=0;sc={};sel=[];question();}
 function isMulti(q){return q[2]==='multi';}
 function question(){var q=Q[i],multi=isMulti(q),h='<div class="card"><div class="bar"><i style="width:'+(i/Q.length*100)+'%"></i></div><p class="qn">第 '+(i+1)+' / '+Q.length+' 题</p><p class="q">'+q[0]+'</p>';if(multi){sel=[];h+='<p class="hint">多选 · 最多选 '+MULTI_CAP+' 项</p>';for(var x=0;x<q[1].length;x++){h+='<button class="opt" id="opt'+x+'" onclick="toggle('+x+')">'+q[1][x][0]+'</button>';}h+='<button class="btn" id="nextbtn" disabled onclick="nextMulti()">下一题 →</button>';}else{for(var y=0;y<q[1].length;y++){h+='<button class="opt" onclick="pick('+y+')">'+q[1][y][0]+'</button>';}}h+='</div>';app.innerHTML=h;window.scrollTo(0,0);}
